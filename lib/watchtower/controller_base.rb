@@ -8,6 +8,7 @@ module Watchtower
     end
     
     module InstanceMethods
+      include ActionView::Helpers::TextHelper
       
       def index
         @watched_exceptions = WatchedExceptionsPresenter.new(params)
@@ -17,6 +18,7 @@ module Watchtower
       
       def destroy
         @watched_exception.destroy
+        render :nothing => true
       end
       
       def destroy_multiple
@@ -24,7 +26,8 @@ module Watchtower
         @deleted_exceptions.each do |watched_exception|
           watched_exception.destroy
         end
-        index
+        
+        render :js => "window.location.reload();"
       end
       
       protected

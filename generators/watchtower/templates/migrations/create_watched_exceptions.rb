@@ -1,14 +1,14 @@
 class CreateWatchedExceptions < ActiveRecord::Migration
   def self.up
     create_table :watched_exceptions do |t|
-      t.string :controller_name, :action_name, :controller_action, :exception_class, :key
-      t.string :parameters, :format, :application_path, :message
-      t.text :backtrace, :request
+      t.string :controller_action, :exception_class, :message, :key
+      t.text :backtrace, :request, :parameters, :environment, :session
       t.datetime :created_at
+      t.column :looked, 'TINYINT(4)', :null => false, :default => 0
     end
     
     change_table :watched_exceptions do |t|
-      [:controller_name, :action_name, :controller_action, :exception_class, :key, :created_at, :message].each do |col|
+      [:controller_action, :exception_class, :key, :created_at, :message].each do |col|
         t.index col
       end
     end

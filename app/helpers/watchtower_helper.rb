@@ -2,7 +2,7 @@ module WatchtowerHelper
   def short_distance(timestamp)
     result = ""
     format = /^(less than|about|over)* *(a|\d+) *(.+)$/
-    to_parse = distance_of_time_in_words_to_now(timestamp)
+    to_parse = distance_of_time_in_words(timestamp, Time.now, false, :locale => :en)
     return to_parse if (parsed = to_parse.scan(format).flatten.compact).empty?
     
     measurement = parsed.pop
