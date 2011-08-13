@@ -1,4 +1,4 @@
-ActionController::Routing::Routes.draw do |map|
+Rails.application.routes.draw do |map|
   map.resources :watchtower, 
                 :only => [:index, :show, :destroy, :destroy_multiple],
                 :collection => {:destroy_multiple => :delete}

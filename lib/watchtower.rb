@@ -1,5 +1,3 @@
-require "watchtower/watched_exception_base"
-require "watchtower/controller_base"
-require "watchtower/application_controller_base"
-require "watchtower/watched_exceptions_presenter"
-require "watchtower/routes"
+module Watchtower
+  require 'watchtower/engine' if defined?(Rails) && Rails::VERSION::MAJOR == 3
+end
