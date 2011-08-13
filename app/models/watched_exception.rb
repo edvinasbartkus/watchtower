@@ -1,6 +1,8 @@
+require 'pp'
+
 class WatchedException < ActiveRecord::Base
   before_validation :generate_key, :if => lambda {|watched_exception| watched_exception.key.blank? }, :on => :create
-  before_save :generate_controller_action, :clean_backtrace
+  before_save :clean_backtrace
 
   validates_presence_of :key
   validates_uniqueness_of :key  
@@ -16,10 +18,6 @@ class WatchedException < ActiveRecord::Base
 
   def generate_key
     self.key = ActiveSupport::SecureRandom.hex(12)
-  end
-  
-  def generate_controller_action
-    self.controller_action = "#{self.controller_name}/#{self.action_name}"
   end
   
   def clean_backtrace; end

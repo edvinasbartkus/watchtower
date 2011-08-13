@@ -6,8 +6,10 @@ module Watchtower
       unless ActionController::RoutingError === exception
         WatchedException.create(env, exception)
       end
-      # render_exception_without_watchtower(env, exception)
+      
+      render_exception_without_watchtower(env, exception)
     end
+    
     alias_method_chain :render_exception, :watchtower
   end
 end
