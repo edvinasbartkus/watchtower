@@ -30,5 +30,5 @@ If you want to secure the data, you might want to set up an initializer:
         login_required unless find_by_key?
       end
     end
-
+    
 Copyright (c) 2009 Josh Clayton, released under the MIT license
