@@ -4,16 +4,14 @@
 </div>
 <div class="col-8">
   <dl>
+    <dt>Datetime</dt>
+    <dd><code><%= @watched_exception.created_at %></code></dd>
     <dt>Exception</dt>
     <dd><code><%= @watched_exception.exception_class %></code></dd>
     <dt>Controller / Action</dt>
     <dd><code><%= @watched_exception.controller_action %></code></dd>
     <dt>Parameters</dt>
     <dd><code><%= @watched_exception.parameters %></code></dd>
-    <dt>Format</dt>
-    <dd><code><%= h @watched_exception.format %></code></dd>
-    <dt>Application Path</dt>
-    <dd><code><%= h @watched_exception.application_path %></code></dd>
   </dl>
 </div>
 <% if @watched_exception.backtrace %>
@@ -24,3 +22,9 @@
     </dl>
   </div>
 <% end %>
+<div class="col-16 col-last">
+  <dt>Environment + Session</dt>
+  <dd class="bt"><code class="backtrace">
+  <%= h(%Q{ #{@watched_exception.environment} \n\nSESSION:\n #{@watched_exception.session} }) %>
+  </code></dd>
+</div>

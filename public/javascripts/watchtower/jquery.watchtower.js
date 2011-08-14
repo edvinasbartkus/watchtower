@@ -17,7 +17,7 @@
       data: {
         get: function() {
           var fn = arguments[0] || function() {};
-          $.get("/watchtower", self.params, function(data) { eval(data); fn(); });
+          $.get("/watchtower.js", self.params, function(data) { eval(data); fn(); });
         },
         destroy: function(ids) {
           var fn = arguments[1] || function() {};
@@ -55,10 +55,12 @@
     var watchtower = $doc.data("watchtower");
     
     $("#watchtower_exceptions_start_at").datepicker({
+      dateFormat: "yy-mm-dd",
       onClose: function(date, inst) { watchtower.utilities.handleDateChange("start_at", date); }
     });
     
     $("#watchtower_exceptions_end_at").datepicker({
+      dateFormat: "yy-mm-dd",
       onClose: function(date, inst) { watchtower.utilities.handleDateChange("end_at", date); }
     });
   });

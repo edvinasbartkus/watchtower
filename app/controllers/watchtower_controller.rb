@@ -4,6 +4,10 @@ class WatchtowerController < ApplicationController
 
   def index
     @watched_exceptions = WatchedExceptionsPresenter.new(params)
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
   
   def show; end
