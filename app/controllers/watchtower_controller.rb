@@ -6,7 +6,8 @@ class WatchtowerController < ApplicationController
     @watched_exceptions = WatchedExceptionsPresenter.new(params)
     respond_to do |format|
       format.html
-      format.js { render :layout => false }
+      format.js {  render :layout => false }
+      format.rss { render :layout => false }
     end
   end
   
