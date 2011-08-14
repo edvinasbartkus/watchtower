@@ -1,6 +1,6 @@
-h1. Watchtower
+Watchtower
 
-h2. Setup
+Setup
 
 Install the plugin:
 

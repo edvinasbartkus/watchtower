@@ -1,6 +1,25 @@
 require "rake"
 require "rake/testtask"
 require "rdoc/task"
+require 'jeweler'
+require './lib/watchtower/version.rb'
+
+Jeweler::Tasks.new do |gem|
+  gem.version = Watchtower::Version::VERSION
+
+  gem.name = "watchtower"
+  gem.summary = %Q{An exception logger for Rails 3.X}
+  gem.description = %Q{An exception logger for Rails 3.X. Stores exceptions in database and provides interface to manage stored exceptions.}
+  gem.email = "edvinas@geeks.lt"
+  gem.homepage = "https://github.com/edvinasbartkus/watchtower"
+  gem.authors = ["Edvinas Bartkus", "Martynas Margis"]
+  
+  gem.add_dependency "activesupport", ">= 2.3.0"
+  gem.add_dependency "will_paginate", ">= 2.3.4"
+  
+  gem.files = Dir.glob('**/*.*').map{|f| f unless (f =~ /\Atest/ or f =~ /\.gem/) }.compact
+end
+Jeweler::RubygemsDotOrgTasks.new
 
 namespace :test do
   Rake::TestTask.new(:all => ["generator:cleanup", 
