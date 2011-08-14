@@ -1,0 +1,4 @@
+<% @deleted_exceptions.each do |watched_exception| -%>
+$('#watched_exception_<%= watched_exception.id %>').remove();
+<% end -%>
+$('#watched-exceptions-recordset').html('<%= render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions} %>');
